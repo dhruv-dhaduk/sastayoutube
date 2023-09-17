@@ -39,7 +39,7 @@ p {
 }
 
 .video-feed {
-    height: calc(100vh - 3rem);
+    height: calc(100dvh - 3rem);
     overflow-y: scroll;
 }
 
@@ -47,7 +47,7 @@ p {
 .footer {
     margin: 0;
     margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     text-align: center;
     border-top: 1px solid #404040;
 }
