@@ -44,12 +44,9 @@
     bottom: 0;
     margin: auto
 }
-.upnextBtn.shuffle {
-    margin-right: 1rem;
-}
 .upnextBtn.clear-video {
     height: 1.35rem;
-    margin-right: 3.5rem;
+    margin-right: 1rem;
 }
 
 .videoplay-title {

@@ -14,8 +14,7 @@ document.getElementById("form").addEventListener("click", function() {
     window.open("https://forms.gle/qgnJPobNPGyQgNp99", "_blank");
 });
 document.getElementById("refresh").addEventListener("click", function() {
-    clear_video();
-    refreshVideoList(true);
+    window.location.reload();
 });
 document.getElementById("shuffle").addEventListener("click", function() {
     refreshVideoList(true);
@@ -24,6 +23,9 @@ document.getElementById("clear-video").addEventListener("click", function() {
     clear_video();
     refreshVideoList(false);
 });
+document.getElementById("backtotop").addEventListener("click", function() {
+    window.scrollTo(0, 0);
+})
 
 const imgs = document.getElementsByTagName("img");
 for (ele of imgs)

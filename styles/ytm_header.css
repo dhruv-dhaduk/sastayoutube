@@ -30,8 +30,3 @@
     right: 0;
     margin-right: 0.75rem;
 }
-
-.refresh {
-    right: 0;
-    margin-right: calc(2 * 0.75rem + 1.5rem);
-}
