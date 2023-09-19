@@ -11,6 +11,10 @@ body {
     margin: 0;
 }
 
+html, body {
+    scroll-behavior: smooth;
+}
+
 button, img {
     cursor: pointer;
 }
