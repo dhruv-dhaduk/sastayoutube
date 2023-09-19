@@ -27,26 +27,49 @@
 }
 
 .upnext {
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
     border-top: 1px solid #2d2d2d;
-    padding: 1rem;
+    /* padding: 1rem; */
+    height: 3rem;
 
     position: relative;
 }
 
-.upnextBtn {
+.upnext-item {
+    background-color: black;
     display: inline-block;
-    position: absolute;
-    right: 0;
-    height: 1.5rem;
+    height: 3rem;
+    text-align: center;
+    vertical-align: middle;
 
+    position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto
+    margin-top: auto;
+    margin-top: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.upnextBtn.clear-video {
-    height: 1.35rem;
-    margin-right: 1rem;
+
+.upnext-item > * {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+}
+
+.clear-video {
+    right: 0;
+}
+.clear-video:active {
+    background-color: #2c2c2c;
+}
+.clear-video > img {
+    height: 1.5rem;
+}
+
+.upnext-label > p {
+    font-size: 0.9rem;
 }
 
 .videoplay-title {
