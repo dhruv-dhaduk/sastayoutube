@@ -14,7 +14,8 @@ function play_video(videoData)
 	const videoPlayerHTML = "<iframe class=\"videoplayer\" id=\"videoplayer\" src=\"https://www.youtube.com/embed/" + videoData["id"] + "?autoplay=1&mute=1&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"autoplay; picture-in-picture;\" allowfullscreen></iframe>";
 
 	playerParent.innerHTML = videoPlayerHTML;
-	videoFeed.style.height = "calc(100dvh - 3rem - 0.5625*100vw)";
+	// videoFeed.style.height = "calc(100dvh - 3rem - 0.5625*100vw)";
+	videoFeed.style.marginTop = "calc(0.5625 * 100vw + 3rem)";
 	document.getElementById("videoplay-info").style.display = "block";
 	document.getElementById("videoplay-title").innerHTML = videoData["videoTitle"];
 	document.getElementById("videoplay-views").innerHTML = convert_number_format(videoData["viewCount"], "views");
@@ -54,7 +55,8 @@ function play_video(videoData)
 
 function clear_video()
 {
-	document.getElementById("video-feed").style.height = "calc(100dvh - 3rem)";
+	document.getElementById("video-feed").style.marginTop = "3rem";
+	// document.getElementById("video-feed").style.height = "calc(100dvh - 3rem)";
 	document.getElementById("videoplayer-container").innerHTML = "";
 	document.getElementById("videoplay-info").style.display = "none";
 

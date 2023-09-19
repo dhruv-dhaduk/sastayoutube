@@ -9,7 +9,9 @@
     align-content: center;
 
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
+    position: fixed;
+    top: 0;
 }
 
 .headerimg {
