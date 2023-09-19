@@ -1,0 +1,14 @@
+<div class="shorts-feed" id="shorts-feed">
+    <div class="shorts-header">
+        <div class="shorts-icon-text"> <img class="shorts-icon" src="https://dhruv-dhaduk.github.io/assets/logos/colored/shorts.png"> <span class="shorts-heading">Shorts</span> </div>
+    </div>
+    <div class="shorts-list" id="shorts-list">
+        <div class="shorts-item">
+            <img class="shorts-thumbnail" src="">
+            <div class="shorts-text">
+                <p class="shorts-title"></p>
+                <p class="shorts-views"></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,6 @@
     align-content: center;
 
     overflow: hidden;
-    /* position: relative; */
     position: fixed;
     top: 0;
 }
