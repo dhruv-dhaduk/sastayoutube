@@ -8,13 +8,14 @@ for (var i = 0; i < loadingItemSize - 1; i++)
 
 document.getElementById("yt").addEventListener("click",function() {
     clear_video();
-    refreshVideoList(true);
+    refreshVideoList(false);
 });
 document.getElementById("form").addEventListener("click", function() {
     window.open("https://forms.gle/qgnJPobNPGyQgNp99", "_blank");
 });
 document.getElementById("refresh").addEventListener("click", function() {
-    window.location.reload();
+    clear_video();
+    refreshVideoList(true);
 });
 document.getElementById("shuffle").addEventListener("click", function() {
     refreshVideoList(true);
