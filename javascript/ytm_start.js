@@ -46,10 +46,8 @@ function play_video(videoData)
 	new_subscribe.addEventListener("click", function() {
 		window.open(videoData["channelLink"], "_blank");
 	});
-
-	setTimeout(() => {
-		refreshVideoList(false);
-	}, 500);
+	
+	window.scrollTo(0, 0);
 }
 
 function clear_video()
