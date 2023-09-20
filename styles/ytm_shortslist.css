@@ -76,6 +76,7 @@
 }
 
 .shorts-title {
+    color: white;
     font-size: 0.9rem;
 
     white-space: normal;
@@ -92,6 +93,7 @@
 }
 
 .shorts-views {
+    color: white;
     font-size: 0.75rem;
     margin: 0.5rem;
     margin-top: 0;

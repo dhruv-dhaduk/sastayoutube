@@ -122,16 +122,18 @@ function create_html_video_item(r)
 
 function create_html_shorts_item(r)
 {
-    const item = document.createElement("div");
+    const item = document.createElement("a");
         const thumb = document.createElement("img");
         const texts = document.createElement("div");
             const title = document.createElement("p");
             const views = document.createElement("p");
 
     item.className = "shorts-item";
-    item.addEventListener("click", function() {
-        window.open(r["link"], "_blank");
-    });
+    item.href = r["link"];
+    item.target = "_blank";
+    // item.addEventListener("click", function() {
+    //     window.open(r["link"], "_blank");
+    // });
         thumb.className = "shorts-thumbnail";
         thumb.src = r["thumbnail"];
         thumb.addEventListener("contextmenu", function(e) { e.preventDefault(); }); 
