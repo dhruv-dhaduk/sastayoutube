@@ -83,11 +83,12 @@ function create_html_video_item(r)
                 const three_dots = document.createElement("img");
 
         container.className = "video-item";
+        container.addEventListener("click", function() { play_video(r) });
             thumb_container.className = "thumbnail-container";
                 thumbnail.className = "thumbnail-img";
                 thumbnail.src = r["thumbnail"];
                 thumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); }); 
-                thumbnail.addEventListener("click", function() { play_video(r); });
+                // thumbnail.addEventListener("click", function() { play_video(r); });
                 duration.className = "duration";
                 duration.innerHTML = r["duration"];
             video_item_info.className = "video-item-info";
