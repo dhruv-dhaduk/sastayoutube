@@ -143,6 +143,9 @@
     margin-right: 1rem;
     right: 0;
 }
+.subscribeBtn:active {
+    background-color: #e0e0e0;
+}
 
 .btn {
     background-color: #2c2c2c;
@@ -164,6 +167,9 @@
     background-repeat: no-repeat;
     background-position: left;
     background-position-x: 1rem;
+}
+.btn:active {
+    background-color: #1a1a1a;
 }
 
 .btn.likeBtn {
