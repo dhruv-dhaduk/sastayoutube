@@ -19,6 +19,10 @@ button, img {
     cursor: default;
 }
 
+img {
+    pointer-events: none;
+}
+
 p {
     margin: 0;
 }

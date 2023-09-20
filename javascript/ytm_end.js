@@ -11,7 +11,7 @@ document.getElementById("yt").addEventListener("click",function() {
     refreshVideoList(false);
 });
 document.getElementById("form").addEventListener("click", function() {
-    window.open("https://forms.gle/qgnJPobNPGyQgNp99", "_blank");
+    // window.open("https://forms.gle/qgnJPobNPGyQgNp99", "_blank");
 });
 document.getElementById("refresh").addEventListener("click", function() {
     window.location.reload();
@@ -30,7 +30,7 @@ document.getElementById("backtotop").addEventListener("click", function() {
 const imgs = document.getElementsByTagName("img");
 for (ele of imgs)
 {
-    ele.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    // ele.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 }
 
 function load_data()
