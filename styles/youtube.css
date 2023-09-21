@@ -22,8 +22,20 @@ html {
 }
 
 .mobile-iframe > iframe {
-    width: 25vw;
+    /* width: 25vw; */
     height: 90vh;
 
     border: 1px solid #505050;
+}
+
+@media (orientation:landscape) {
+    .mobile-iframe > iframe {
+        width: 25vw;
+    }
+}
+
+@media (orientation:portrait) {
+    .mobile-iframe > iframe {
+        width: 90vw;
+    }
 }
