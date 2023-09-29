@@ -41,8 +41,11 @@
     white-space: nowrap;
 }
 
-.shorts-list::-webkit-scrollbar {
+.shorts-list::-webkit-scrollbar{
     display: none;
+}
+.shorts-list {
+    scrollbar-width: none;
 }
 
 .shorts-item {

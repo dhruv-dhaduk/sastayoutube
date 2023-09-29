@@ -25,6 +25,9 @@
 .videoplay-buttons::-webkit-scrollbar {
     display: none;
 }
+.videoplay-buttons {
+    scrollbar-width: none;
+}
 
 .upnext {
     /* font-size: 0.9rem; */
