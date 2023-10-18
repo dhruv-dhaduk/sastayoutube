@@ -6,9 +6,9 @@
     margin: 1rem;
 }
 
-.video-item * {
+/* .video-item * {
     display: none;
-}
+} */
 
 .thumbnail-container, .thumbnail-img {
     display: block;
@@ -17,4 +17,13 @@
 .thumbnail-img {
     width: 100%;
     border-radius: 1rem;
+}
+
+.channel-icon {
+    width: 2.5rem;
+    border-radius: 50%;
+}
+
+.video-three-dots {
+    width: 1rem;
 }
