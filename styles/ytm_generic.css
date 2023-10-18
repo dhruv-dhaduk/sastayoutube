@@ -45,6 +45,8 @@ p {
 
     position: fixed;
     top: 3rem;
+
+    z-index: 1;
 }
 
 .video-feed {
