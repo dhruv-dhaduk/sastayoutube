@@ -12,6 +12,9 @@
 }
 
 .navitem {
+    border-radius: 0.5em;
+    cursor: pointer;
+
     height: 5rem;
 
     display: flex;
@@ -20,8 +23,16 @@
     align-items: center;
 }
 
+.navitem:hover {
+    background-color: #1a1a1a;
+}
+.navitem:active {
+    background-color: #2c2c2c;
+}
+
 .navimg {
     width: 1.5rem;
+    cursor: pointer;
 }
 
 .navlabel {
