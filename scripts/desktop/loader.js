@@ -4,6 +4,12 @@
 // }
 // load_data();
 
+const loading = document.querySelector("#loading");
+const loadingItem = document.querySelector(".loading-item");
+const loadingItemCount = 12;
+for (var i = 0; i < loadingItemCount - 1; i++)
+    loading.append(loadingItem.cloneNode(true));
+
 document.querySelector("#refresh").addEventListener("click", function() {
     window.location.reload();
 });
