@@ -39,3 +39,13 @@
     border-radius: 1rem;
 }
 
+@media (max-width: 70rem) {
+    .shorts-item {
+        width: 25%;
+    }
+}
+@media (max-width: 50rem) {
+    .shorts-item {
+        width: 40%;
+    }
+}
