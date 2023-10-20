@@ -1,0 +1,15 @@
+.shorts-icon-text {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+.shorts-icon {
+    width: 1.5rem;
+    margin-right: 0.5em;
+}
+
+.shorts-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
