@@ -70,6 +70,8 @@
 .video-item-texts {
     margin-left: 1rem;
     margin-right: 1rem;
+
+    width: 100%;
 }
 
 .video-item-texts > p {
