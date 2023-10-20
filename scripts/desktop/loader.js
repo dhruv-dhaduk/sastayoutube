@@ -63,6 +63,8 @@ function create_html_video_item(v)
                 const threeDots = document.createElement("img");
 
     videoItem.className = "video-item";
+    videoItem.addEventListener("mouseenter", function() { threeDotsContainer.style.opacity = 1; });
+    videoItem.addEventListener("mouseleave", function() { threeDotsContainer.style.opacity = 0; });
         thumbnailContainer.className = "thumbnail-container";
             thumbnailImg.className = "thumbnail-img";
             thumbnailImg.src = v["thumbnail"];

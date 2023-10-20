@@ -49,6 +49,7 @@
 
 .video-three-dots-container {
     padding: 0.5rem;
+    opacity: 0;
 }
 .video-three-dots {
     width: 1rem;
