@@ -83,6 +83,4 @@ function create_html_video_item(v)
     videoItem.addEventListener("click", function(e) { window.open(v["link"], "_blank"); });
 
     v["htmlItem"] = videoItem;
-
-    console.log(v);
 }
