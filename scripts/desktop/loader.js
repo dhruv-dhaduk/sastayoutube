@@ -1,9 +1,3 @@
-// const data = [];
-// for (r of hardCodedData) {
-//     data.push(r);
-// }
-// load_data();
-
 const loading = document.querySelector("#loading");
 const loadingItem = document.querySelector(".loading-item");
 loading.innerHTML = "";
@@ -26,6 +20,12 @@ document.querySelector("#yt").addEventListener("click", function() {
 document.querySelector("#shuffle").addEventListener("click", function() {
     refreshVideoList(true);
 });
+
+// const data = [];
+// for (r of hardCodedData) {
+//     data.push(r);
+// }
+// load_data();
 
 function load_data() 
 {
@@ -118,8 +118,10 @@ function refreshVideoList(doShuffle)
     if (doShuffle)
         shuffle(data);
 
+    const shortsfeed = document.querySelector("#shorts-feed");
     const videolist = document.querySelector("#video-feed");
     videolist.innerHTML = "";
+    videolist.append(shortsfeed);
 
     clearInterval(videoslistITV);
 
