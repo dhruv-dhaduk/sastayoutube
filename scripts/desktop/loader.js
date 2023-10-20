@@ -18,6 +18,14 @@ document.querySelector("#backtotop").addEventListener("click", function() {
     window.scrollTo(0, 0);
 });
 
+document.querySelector("#yt").addEventListener("click", function() {
+    refreshVideoList(false);
+});
+
+document.querySelector("#shuffle").addEventListener("click", function() {
+    refreshVideoList(true);
+});
+
 function load_data() 
 {
     const feed = document.querySelector("#video-feed");
@@ -99,4 +107,32 @@ function create_html_video_item(v)
     videoItem.addEventListener("click", function(e) { window.open(v["link"], "_blank"); });
 
     v["htmlItem"] = videoItem;
+}
+
+var videoslistITV;
+function refreshVideoList(doShuffle)
+{
+    if (doShuffle)
+        shuffle(data);
+
+    const videolist = document.querySelector("#video-feed");
+    videolist.innerHTML = "";
+
+    clearInterval(videoslistITV);
+
+    var videosCt = 0;
+    videoslistITV = setInterval(() => {
+        while ((videosCt < data.length) && (data[videosCt]["status"] != "done"))
+        {
+            videosCt++;
+        }
+
+        if (videosCt >= data.length) {
+            clearInterval(videoslistITV);
+        }
+        else {
+            videolist.append(data[videosCt]["htmlItem"]);
+            videosCt++;
+        }
+    }, 100);
 }
