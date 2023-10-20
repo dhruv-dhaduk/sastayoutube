@@ -78,6 +78,10 @@ function create_html_video_item(v)
     videoItem.append(thumbnailContainer);
     videoItem.append(videoItemInfo);
 
+    channelIconContainer.addEventListener("click", function(e) { e.stopPropagation(); } );
+    threeDotsContainer.addEventListener("click", function(e) { e.stopPropagation(); } );
+    videoItem.addEventListener("click", function(e) { window.open(v["link"], "_blank"); });
+
     v["htmlItem"] = videoItem;
 
     console.log(v);
