@@ -3,11 +3,11 @@ function load_data()
     return;
 }
 
-const data = [];
-for (r of hardCodedData) {
-    data.push(r);
-}
-load_data();
+// const data = [];
+// for (r of hardCodedData) {
+//     data.push(r);
+// }
+// load_data();
 
 function load_data() 
 {
