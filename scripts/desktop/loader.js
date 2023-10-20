@@ -31,6 +31,8 @@ function load_data()
         create_html_video_item(r);
         feed.append(r["htmlItem"]);
     }
+
+    loading.style.display = "none";
 }
 
 function create_html_video_item(v) 
