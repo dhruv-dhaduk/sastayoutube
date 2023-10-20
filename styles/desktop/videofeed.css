@@ -24,6 +24,19 @@
     border-radius: 50%;
 }
 
+.video-three-dots-container {
+    padding: 0.5rem;
+}
 .video-three-dots {
     width: 1rem;
+}
+
+.video-item-info {
+    display: flex;
+    align-items: start;
+}
+
+.video-item-texts {
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
