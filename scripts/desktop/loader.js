@@ -69,6 +69,7 @@ function create_html_video_item(v)
             thumbnailImg.className = "thumbnail-img";
             thumbnailImg.src = v["thumbnail"];
             thumbnailImg.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+            thumbnailImg.draggable = false;
             duration.className = "duration";
             duration.innerHTML = v["duration"];
         videoItemInfo.className = "video-item-info";
