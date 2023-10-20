@@ -51,6 +51,7 @@
 .video-item-info {
     display: flex;  
     align-items: start;
+    padding-top: 0.75rem;
 }
 
 .video-item-texts {
