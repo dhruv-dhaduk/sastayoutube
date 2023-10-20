@@ -64,10 +64,14 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+
+    line-height: 1.35;
 }
 .video-title {
     -webkit-line-clamp: 2;
             line-clamp: 2;
+
+    margin-bottom: 0.3em;
 }
 .video-channel-name, .video-additional-data {
     -webkit-line-clamp: 1;
