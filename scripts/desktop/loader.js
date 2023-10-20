@@ -8,8 +8,8 @@ const loading = document.querySelector("#loading");
 const loadingItem = document.querySelector(".loading-item");
 loading.innerHTML = "";
 const loadingItemCount = 12;
-for (var i = 0; i < loadingItemCount; i++)
-    loading.append(loadingItem.cloneNode(true));
+// for (var i = 0; i < loadingItemCount; i++)
+//     loading.append(loadingItem.cloneNode(true));
 
 document.querySelector("#refresh").addEventListener("click", function() {
     window.location.reload();
