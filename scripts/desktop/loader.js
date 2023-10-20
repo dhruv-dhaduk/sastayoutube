@@ -16,7 +16,12 @@ function load_data()
 {
     const feed = document.querySelector("#video-feed");
     for (const r of data) 
-    {
+    {   
+        r["apiKey"] = "";
+        if (r["status"] != "done") {
+            continue;
+        }
+
         create_html_video_item(r);
         feed.append(r["htmlItem"]);
     }
