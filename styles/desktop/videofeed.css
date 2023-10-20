@@ -1,7 +1,8 @@
 .video-feed {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 20px;
+    column-gap: 1.25rem;
+    row-gap: 2.5rem;
 
     margin: 2.5rem;
 
