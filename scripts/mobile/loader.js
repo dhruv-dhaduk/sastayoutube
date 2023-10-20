@@ -2,8 +2,9 @@
 
 const loading = document.getElementById("loading");
 const loadingItem = document.getElementsByClassName("loading-item")[0];
+loading.innerHTML = "";
 const loadingItemSize = 4;
-for (var i = 0; i < loadingItemSize - 1; i++)
+for (var i = 0; i < loadingItemSize; i++)
     loading.append(loadingItem.cloneNode(true));
 
 document.getElementById("yt").addEventListener("click",function() {
