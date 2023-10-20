@@ -32,3 +32,9 @@ p {
 * {
     user-select: none;
 }
+
+.dot {
+    font-weight: bold;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}

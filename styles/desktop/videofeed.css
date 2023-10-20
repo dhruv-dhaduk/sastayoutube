@@ -6,14 +6,6 @@
     margin: 1rem;
 }
 
-/* .video-item * {
-    display: none;
-} */
-
-/* .thumbnail-container, .thumbnail-img {
-    display: block;
-} */
-
 .thumbnail-container {
     position: relative;
 }
@@ -72,8 +64,15 @@
             line-clamp: 2;
 
     margin-bottom: 0.3em;
+
+    font-size: 1rem;
+    font-weight: bold;
 }
 .video-channel-name, .video-additional-data {
     -webkit-line-clamp: 1;
             line-clamp: 1;
+
+    color: #a0a0a0;
+
+    font-size: 0.9rem;
 }
