@@ -1,13 +1,16 @@
-function load_data()
-{
-    return;
-}
-
 // const data = [];
 // for (r of hardCodedData) {
 //     data.push(r);
 // }
 // load_data();
+
+document.querySelector("#refresh").addEventListener("click", function() {
+    window.location.reload();
+});
+
+document.querySelector("#backtotop").addEventListener("click", function() {
+    window.scrollTo(0, 0);
+});
 
 function load_data() 
 {
