@@ -113,3 +113,9 @@
     background-position: left;
     background-position-x: 1rem;
 }
+.btn:hover {
+    background-color: #404040;
+}
+.btn:active {
+    background-color: #555555;
+}
