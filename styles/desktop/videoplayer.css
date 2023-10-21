@@ -7,15 +7,15 @@
     /* background-color: red; */
     flex: 1;
 
-    display: none;
+    /* display: none; */
 
     position: sticky;
     top: 3.5rem;
 }
 
 .video-feed {
-    /* flex-basis: 22rem;
-    margin-right: 0; */
+    flex-basis: 22rem;
+    margin-right: 0;
 }
 
 .iframe-container {
