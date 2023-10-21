@@ -41,19 +41,51 @@
     line-height: 1.25em;
 }
 
-.video-player-channel-icon {
-    width: 2.5rem;
-}
 
 .video-player-more-info {
     display: flex;
     justify-content: space-between;
-
+    
     margin-top: 0.5rem;
 }
 
 .video-player-channel {
     display: flex;
+    align-items: center;
+}
+
+.video-player-channel-icon {
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.video-player-channel-info {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.video-player-channel-title {
+    font-weight: bold;
+    line-height: 1.5;
+}
+.video-player-channel-subs {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    line-height: 1.25;
+}
+
+.subscribe-btn {
+    color: black;
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: bold;
+
+    height: 2.25rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 1.25rem;
 }
 
 .video-player-buttons {
