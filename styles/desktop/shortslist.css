@@ -46,6 +46,8 @@
     opacity: 75%;
 
     border-radius: 1rem;
+
+    cursor: pointer;
 }
 
 .shorts-text {
@@ -82,6 +84,11 @@
             line-clamp: 1;
 
     font-size: 0.9rem;
+}
+
+.shorts-text > p, .shorts-text > p:hover, .shorts-text > p:active, .shorts-text > p:visited, .shorts-text > p:focus, .shorts-text > p:link {
+    color: white;
+    text-decoration: none;
 }
 
 @media (max-width: 70rem) {
