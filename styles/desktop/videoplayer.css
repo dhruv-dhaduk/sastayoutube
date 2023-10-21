@@ -3,6 +3,10 @@
     align-items: start;
 }
 
+#closevideo {
+    display: none;
+}
+
 .video-player {
     flex: 1;
     display: none;
