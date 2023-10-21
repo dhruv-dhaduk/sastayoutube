@@ -1,6 +1,6 @@
 .main-container {
     display: flex;
-    align-items: start;
+    /* align-items: start; */
 }
 
 .video-player {
@@ -26,4 +26,8 @@
 .iframe {
     width: 100%;
     height: 100%;
+}
+
+.video-player-channel-icon {
+    width: 2.5rem;
 }
