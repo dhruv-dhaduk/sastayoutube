@@ -122,9 +122,32 @@
 
 .btn.likebtn {
     background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/like_white.png");
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    position: relative;
 }
 .btn.dislikebtn {
     background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/dislike_white.png");
+    color: #2c2c2c;
+    background-position-x: center;
+    padding-left: 2rem;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+}
+.btn.likebtn:after {
+    content: "";
+    border: 1px solid #505050;
+    height: 60%;
+
+    position: absolute;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 
 .btn.sharebtn {
