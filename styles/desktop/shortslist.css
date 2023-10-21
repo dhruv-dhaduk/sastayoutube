@@ -101,3 +101,8 @@
         width: 40%;
     }
 }
+@media (min-width: 120rem) {
+    .shorts-item {
+        width: 15rem;
+    }
+}
