@@ -21,11 +21,11 @@ document.querySelector("#shuffle").addEventListener("click", function() {
     refreshVideoList(true);
 });
 
-const data = [];
-for (r of hardCodedData) {
-    data.push(r);
-}
-load_data();
+// const data = [];
+// for (r of hardCodedData) {
+//     data.push(r);
+// }
+// load_data();
 
 function load_data() 
 {
@@ -37,10 +37,19 @@ function load_data()
             continue;
         }
 
-        create_html_video_item(r);
+        if (r["type"] == "video") {
+            create_html_video_item(r);
+        }
+        else if (r["type"] == "short") {
+            create_html_shorts_item(r);
+        }
+        else {
+            r["htmlItem"] = "";
+        }
     }
 
     loading.style.display = "none";
+
     refreshVideoList(true);
 }
 
@@ -113,25 +122,56 @@ function create_html_video_item(v)
     v["htmlItem"] = videoItem;
 }
 
-var videoslistITV;
+function create_html_shorts_item(s) 
+{
+    const item = document.createElement("a");
+        const shortsThumbnail = document.createElement("img");
+        const shortsText = document.createElement("div");
+            const shortsTitle = document.createElement("p");
+            const shortsViews = document.createElement("p");
+
+    item.className = "shorts-item";
+    item.href = s["link"];
+    item.target = "_blank";
+        shortsThumbnail.className = "shorts-thumbnail";
+        shortsThumbnail.src = s["thumbnail"];
+        shortsThumbnail.draggable = false;
+        shortsThumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+        shortsText.className = "shorts-text";
+            shortsTitle.className = "shorts-title";
+            shortsTitle.innerHTML = s["videoTitle"];
+            shortsViews.className = "shorts-views";
+            shortsViews.innerHTML = convert_number_format(s["viewCount"], "views");
+    
+    shortsText.append(shortsTitle);
+    shortsText.append(shortsViews);
+    item.append(shortsThumbnail);
+    item.append(shortsText);
+
+    s["htmlItem"] = item;
+}
+
+var videoslistITV, shortslistITV;
 function refreshVideoList(doShuffle)
 {
     if (doShuffle)
         shuffle(data);
 
     const shortsfeed = document.querySelector("#shorts-feed");
+    const shortslist = document.querySelector("#shorts-list");
     const videolist = document.querySelector("#video-feed");
+    shortsfeed.style.display = "block";
     videolist.innerHTML = "";
+    shortslist.innerHTML = "";
     videolist.append(shortsfeed);
 
     clearInterval(videoslistITV);
+    clearInterval(shortslistITV);
 
     var videosCt = 0;
     videoslistITV = setInterval(() => {
-        while ((videosCt < data.length) && (data[videosCt]["status"] != "done"))
-        {
+        while ((videosCt < data.length) && (data[videosCt]["status"] != "done" || data[videosCt]["type"] != "video"))
             videosCt++;
-        }
 
         if (videosCt >= data.length) {
             clearInterval(videoslistITV);
@@ -140,5 +180,20 @@ function refreshVideoList(doShuffle)
             videolist.append(data[videosCt]["htmlItem"]);
             videosCt++;
         }
+    }, 100);
+
+    var shortsCt = 0;
+    shortslistITV = setInterval(() => {
+        while ((shortsCt < data.length) && (data[shortsCt]["status"] != "done" || data[shortsCt]["type"] != "short"))
+            shortsCt++;
+
+        if (shortsCt >= data.length) {
+            clearInterval(shortslistITV);
+        }
+        else {
+            shortslist.append(data[shortsCt]["htmlItem"]);
+            shortsCt++;
+        }
+        
     }, 100);
 }
