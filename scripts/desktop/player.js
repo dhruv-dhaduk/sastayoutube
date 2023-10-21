@@ -33,10 +33,22 @@ function play_video(videoData)
     document.querySelector("#video-player-channel-title").innerHTML = videoData["channelTitle"];
     document.querySelector("#video-player-channel-subs").innerHTML = convert_number_format(videoData["subscriberCount"], "subscribers");
     document.querySelector("#video-player-likes").innerHTML = convert_number_format(videoData["likeCount"], "");
-    
+
 }
 
 function clear_video()
 {
+    const videoFeed = document.querySelector("#video-feed");
+    videoFeed.style.marginRight = "2.5rem";
+    videoFeed.style.flexBasis = "";
 
+    document.querySelector("#iframe-container").innerHTML = "";
+    document.querySelector("#video-player").style.display = "none";
+
+    if (playingVideoData != undefined) {
+        if (playingVideoData["type"] == "short")
+            playingVideoData["htmlItem"].style.display = "inline-block";
+        else
+            playingVideoData["htmlItem"].style.display = "block";
+    }
 }
