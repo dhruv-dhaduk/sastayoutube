@@ -159,3 +159,19 @@
 .btn.reportbtn {
     background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/flag_white.png");
 }
+
+.video-player-title, .video-player-additional-info{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+            line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.video-player-channel-title, .video-player-channel-subs {
+    max-width: 20ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
