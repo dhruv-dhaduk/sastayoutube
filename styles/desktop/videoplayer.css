@@ -119,3 +119,20 @@
 .btn:active {
     background-color: #555555;
 }
+
+.btn.likebtn {
+    background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/like_white.png");
+}
+.btn.dislikebtn {
+    background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/dislike_white.png");
+}
+
+.btn.sharebtn {
+    background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/share_white.png");
+}
+.btn.savebtn {
+    background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/add_to_playlist_white.png");
+}
+.btn.reportbtn {
+    background-image: url("https://dhruv-dhaduk.github.io/assets/logos/white/flag_white.png");
+}
