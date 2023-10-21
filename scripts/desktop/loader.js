@@ -21,6 +21,10 @@ document.querySelector("#shuffle").addEventListener("click", function() {
     refreshVideoList(true);
 });
 
+document.querySelector("#closevideo").addEventListener("click", function() {
+    clear_video();
+});
+
 // const data = [];
 // for (r of hardCodedData) {
 //     data.push(r);
