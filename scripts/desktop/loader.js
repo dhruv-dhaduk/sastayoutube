@@ -21,11 +21,11 @@ document.querySelector("#shuffle").addEventListener("click", function() {
     refreshVideoList(true);
 });
 
-// const data = [];
-// for (r of hardCodedData) {
-//     data.push(r);
-// }
-// load_data();
+const data = [];
+for (r of hardCodedData) {
+    data.push(r);
+}
+load_data();
 
 function load_data() 
 {
