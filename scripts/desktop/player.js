@@ -35,6 +35,7 @@ function play_video(videoData)
     document.querySelector("#video-player-likes").innerHTML = convert_number_format(videoData["likeCount"], "");
 
     document.querySelector("#closevideo").style.display = "flex";
+    document.querySelector("#shorts-feed").style.display = "none";
 
 }
 
@@ -47,6 +48,7 @@ function clear_video()
     document.querySelector("#iframe-container").innerHTML = "";
     document.querySelector("#video-player").style.display = "none";
     document.querySelector("#closevideo").style.display = "none";
+    document.querySelector("#shorts-feed").style.display = "block";
 
     if (playingVideoData != undefined) {
         if (playingVideoData["type"] == "short")
