@@ -19,7 +19,7 @@ function play_video(videoData)
     const videoFeed = document.querySelector("#video-feed");
 
     iframeContainer.innerHTML = "";
-    const videoIframeHTML = "<iframe class=\"iframe\" id=\"iframe\" src=\"https://www.youtube.com/embed/" + videoData["id"] + "?autoplay=1&mute=1&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"autoplay; picture-in-picture;\" allowfullscreen></iframe>"
+    const videoIframeHTML = "<iframe class=\"iframe\" id=\"iframe\" src=\"https://www.youtube.com/embed/" + videoData["id"] + "?autoplay=1&mute=1&rel=0\" frameborder=\"0\" allow=\"autoplay; picture-in-picture;\" allowfullscreen></iframe>"
     iframeContainer.innerHTML = videoIframeHTML;
 
     videoPlayer.style.display = "block";
