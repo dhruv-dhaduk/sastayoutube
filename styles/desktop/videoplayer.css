@@ -43,3 +43,18 @@
 .video-player-channel-icon {
     width: 2.5rem;
 }
+
+.video-player-more-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 0.5rem;
+}
+
+.video-player-channel {
+    display: flex;
+}
+
+.video-player-buttons {
+    display: flex;
+}
