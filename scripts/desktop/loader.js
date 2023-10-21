@@ -121,7 +121,7 @@ function create_html_video_item(v)
 
     channelIconContainer.addEventListener("click", function(e) { e.stopPropagation(); } );
     threeDotsContainer.addEventListener("click", function(e) { e.stopPropagation(); } );
-    videoItem.addEventListener("click", function(e) { window.open(v["link"], "_blank"); });
+    videoItem.addEventListener("click", function(e) { play_video(v); });
 
     v["htmlItem"] = videoItem;
 }
