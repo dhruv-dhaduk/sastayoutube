@@ -1,0 +1,15 @@
+.main-container {
+    display: flex;
+}
+
+.video-player {
+    flex: 1;
+
+    height: 100vh;
+
+    /* display: none; */
+}
+
+.video-feed {
+    /* flex-basis: 22rem; */
+}
