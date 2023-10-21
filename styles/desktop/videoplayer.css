@@ -6,8 +6,9 @@
 .video-player {
     /* background-color: red; */
     flex: 1;
-
     /* display: none; */
+
+    margin-left: 2.5rem;
 
     position: sticky;
     top: 3.5rem;
