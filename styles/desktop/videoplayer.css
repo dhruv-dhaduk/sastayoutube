@@ -4,9 +4,8 @@
 }
 
 .video-player {
-    /* background-color: red; */
     flex: 1;
-    /* display: none; */
+    display: none;
 
     margin-left: 2.5rem;
 
@@ -14,10 +13,10 @@
     top: 3.5rem;
 }
 
-.video-feed {
+/* .video-feed {
     flex-basis: 22rem;
     margin-right: 0;
-}
+} */
 
 .iframe-container {
     width: 100%;
