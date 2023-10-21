@@ -28,6 +28,18 @@
     height: 100%;
 }
 
+.video-player-title {
+    font-size: 1.25em;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+.video-player-additional-info {
+    color: #a0a0a0;
+    font-size: 0.9em;
+    line-height: 1.25em;
+}
+
 .video-player-channel-icon {
     width: 2.5rem;
 }
