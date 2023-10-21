@@ -56,4 +56,6 @@ function clear_video()
         else
             playingVideoData["htmlItem"].style.display = "block";
     }
+
+    playingVideoData = undefined;
 }

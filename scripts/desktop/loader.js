@@ -164,10 +164,14 @@ function refreshVideoList(doShuffle)
     const shortsfeed = document.querySelector("#shorts-feed");
     const shortslist = document.querySelector("#shorts-list");
     const videolist = document.querySelector("#video-feed");
-    shortsfeed.style.display = "block";
     videolist.innerHTML = "";
     shortslist.innerHTML = "";
     videolist.append(shortsfeed);
+
+    if (playingVideoData === undefined)
+        shortsfeed.style.display = "block";
+    else
+        shortsfeed.style.display = "none";
 
     clearInterval(videoslistITV);
     clearInterval(shortslistITV);
