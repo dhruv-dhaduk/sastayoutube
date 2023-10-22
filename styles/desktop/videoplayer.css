@@ -58,6 +58,8 @@
 .video-player-channel {
     display: flex;
     align-items: center;
+
+    margin-top: 1rem;
 }
 
 .video-player-channel-icon {
@@ -97,6 +99,8 @@
 .video-player-buttons {
     display: flex;
     align-items: center;
+
+    margin-top: 1rem;
 }
 
 .btn {
