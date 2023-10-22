@@ -1,7 +1,6 @@
 .main-container {
     display: flex;
     align-items: start;
-    /* flex-direction: column; */
 }
 
 #closevideo {
@@ -13,10 +12,14 @@
     flex: 1;
     display: none;
 
+    margin-right: 2.5rem;
     margin-left: 2.5rem;
 
     position: sticky;
+    z-index: 1;
     top: 3.5rem;
+
+    height: fit-content;
 }
 
 /* .video-feed {
@@ -24,9 +27,21 @@
     margin-right: 0;
 } */
 
+@media (max-width: 70rem) {
+    .main-container {
+        display: block;
+    }
+    .video-player {
+        position: static;
+    }
+}
+
 .iframe-container {
     width: 100%;
     aspect-ratio: 16 / 9;
+
+    z-index: 2;
+    top: 3.5rem;
 }
 
 .iframe {

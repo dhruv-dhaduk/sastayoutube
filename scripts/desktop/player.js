@@ -36,6 +36,7 @@ function play_video(videoData)
     document.querySelector("#closevideo").style.display = "flex";
     document.querySelector("#shorts-feed").style.display = "none";
 
+    window.scrollTo(0, 0);
 }
 
 function clear_video()
