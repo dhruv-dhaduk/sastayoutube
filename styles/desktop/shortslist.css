@@ -26,6 +26,10 @@
     white-space: nowrap;
 
     scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.shorts-list::-webkit-scrollbar {
+    display: none;
 }
 
 .shorts-item {
