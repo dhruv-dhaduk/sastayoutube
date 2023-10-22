@@ -23,7 +23,6 @@ function play_video(videoData)
     iframeContainer.innerHTML = videoIframeHTML;
 
     videoPlayer.style.display = "block";
-    videoFeed.style.marginRight = 0;
     videoFeed.style.flexBasis = "22rem";
 
     document.querySelector("#video-player-title").innerHTML = videoData["videoTitle"];
@@ -42,7 +41,6 @@ function play_video(videoData)
 function clear_video()
 {
     const videoFeed = document.querySelector("#video-feed");
-    videoFeed.style.marginRight = "2.5rem";
     videoFeed.style.flexBasis = "";
 
     document.querySelector("#iframe-container").innerHTML = "";
