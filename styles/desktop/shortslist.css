@@ -24,6 +24,8 @@
 .shorts-list {
     overflow-x: scroll;
     white-space: nowrap;
+
+    scroll-behavior: smooth;
 }
 
 .shorts-item {
