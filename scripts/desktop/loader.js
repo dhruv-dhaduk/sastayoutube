@@ -171,6 +171,7 @@ function refreshVideoList(doShuffle)
     const videolist = document.querySelector("#video-feed");
     videolist.innerHTML = "";
     shortslist.innerHTML = "";
+    check_max_shorts_scroll();
     videolist.append(shortsfeed);
 
     if (playingVideoData === undefined)
@@ -201,7 +202,7 @@ function refreshVideoList(doShuffle)
             shortsCt++;
 
         if (shortsCt >= data.length) {
-            clearInterval(shortslistITV);
+            clearInterval(shortslistITV);  
         }
         else {
             shortslist.append(data[shortsCt]["htmlItem"]);
