@@ -3,6 +3,7 @@ const shortslist = document.querySelector("#shorts-list");
 const shortsleftscroll = document.querySelector("#shorts-leftscroll");
 const shortsrightscroll = document.querySelector("#shorts-rightscroll");
 
+shortslist.addEventListener("scroll", check_max_shorts_scroll);
 shortsleftscroll.addEventListener("click", shortslist_left_scroll);
 shortsrightscroll.addEventListener("click", shortslist_right_scroll);
 
@@ -10,22 +11,18 @@ check_max_shorts_scroll();
 
 function shortslist_left_scroll() {
     if (shortslist.scrollLeft - shortslist.offsetWidth / 2 <= 100)
-    shortslist.scrollTo(0, 0);
-else
-shortslist.scrollTo(shortslist.scrollLeft - shortslist.offsetWidth / 2, 0);
-
-setTimeout(check_max_shorts_scroll, 1000);
+        shortslist.scrollTo(0, 0);
+    else
+        shortslist.scrollTo(shortslist.scrollLeft - shortslist.offsetWidth / 2, 0);
 }
 
 function shortslist_right_scroll() {    
     const shortslistScrollLeftMax = shortslist.scrollWidth - shortslist.offsetWidth;
     
     if (shortslistScrollLeftMax - shortslist.scrollLeft - shortslist.offsetWidth / 2 <= 100)
-    shortslist.scrollTo(shortslistScrollLeftMax, 0);
-else
-shortslist.scrollTo(shortslist.scrollLeft + shortslist.offsetWidth / 2, 0);
-
-setTimeout(check_max_shorts_scroll, 1000);
+        shortslist.scrollTo(shortslistScrollLeftMax, 0);
+    else
+        shortslist.scrollTo(shortslist.scrollLeft + shortslist.offsetWidth / 2, 0);
 }
 
 function check_max_shorts_scroll() {
