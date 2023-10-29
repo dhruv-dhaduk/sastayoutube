@@ -198,32 +198,3 @@ function fetch_yt_video_data(link, videoDataRet, API_KEY)
         videoDataRet["status"] = "failed";
     });
 }
-
-function get_thumbnail_url(thumbnails)
-{
-    var thumbnail;
-
-    try {
-        thumbnail = thumbnails.maxres.url;
-    }
-    catch(err) {
-        try {
-            thumbnail = thumbnails.standard.url;
-        }
-        catch(err) {
-            try {
-                thumbnail = thumbnails.high.url;
-            }
-            catch(err) {
-                try {
-                    thumbnail = thumbnails.medium.url;
-                }
-                catch(err) {
-                    thumbnail = thumbnails.default.url;
-                }
-            }
-        }
-    }
-
-    return thumbnail;
-}

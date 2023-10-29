@@ -102,8 +102,6 @@ function readDataYT(yt)
 
 async function fetchAll() {
 
-    const timeStart = Date.now();
-
     return new Promise(async (resolve, reject) => {
         const sheetJSON = await fetchSheetYT();
         const sheet = readSheetYT(sheetJSON);
@@ -126,7 +124,6 @@ async function fetchAll() {
                     const videoData = readDataYT(yt);
                     data.push(videoData);
                 }
-                console.log(`TIME TAKEN = ${Date.now() - timeStart} mills`);
                 resolve(data);
             })
             .catch((err) => {

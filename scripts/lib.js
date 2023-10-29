@@ -35,6 +35,35 @@ function get_videoID_from_link(link)
     }
 }
 
+function get_thumbnail_url(thumbnails)
+{
+    var thumbnail;
+
+    try {
+        thumbnail = thumbnails.maxres.url;
+    }
+    catch(err) {
+        try {
+            thumbnail = thumbnails.standard.url;
+        }
+        catch(err) {
+            try {
+                thumbnail = thumbnails.high.url;
+            }
+            catch(err) {
+                try {
+                    thumbnail = thumbnails.medium.url;
+                }
+                catch(err) {
+                    thumbnail = thumbnails.default.url;
+                }
+            }
+        }
+    }
+
+    return thumbnail;
+}
+
 function convertDurationToHMS(duration) {
     const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
     const hours = (parseInt(match[1]) || 0);
