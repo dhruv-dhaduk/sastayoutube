@@ -1,6 +1,8 @@
-var playingVideoData;
+import { convert_number_format, convert_upload_time_format } from "../lib.js";
 
-function play_video(videoData)
+export var playingVideoData;
+
+export function play_video(videoData)
 {
 	const videoFeed = document.getElementById("video-feed");
 	const playerParent = document.getElementById("videoplayer-container");
@@ -45,7 +47,7 @@ function play_video(videoData)
 	window.scrollTo(0, 0);
 }
 
-function clear_video()
+export function clear_video()
 {
 	document.getElementById("video-feed").style.marginTop = "3rem";
 	document.getElementById("videoplayer-container").innerHTML = "";

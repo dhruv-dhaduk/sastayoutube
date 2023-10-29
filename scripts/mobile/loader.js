@@ -1,3 +1,6 @@
+import { convert_number_format, convert_upload_time_format, shuffle } from "../lib.js";
+import { playingVideoData, play_video, clear_video } from "./player.js";
+
 // document.addEventListener("DOMContentLoaded", load_data());
 
 const loading = document.getElementById("loading");
@@ -9,7 +12,6 @@ for (var i = 0; i < loadingItemSize; i++)
 
 document.getElementById("yt").addEventListener("click",function() {
     clear_video();
-    refreshVideoList(false);
 });
 document.getElementById("form").addEventListener("click", function() {
     // window.open("https://forms.gle/qgnJPobNPGyQgNp99", "_blank");
@@ -17,24 +19,20 @@ document.getElementById("form").addEventListener("click", function() {
 document.getElementById("refresh").addEventListener("click", function() {
     window.location.reload();
 });
-document.getElementById("shuffle").addEventListener("click", function() {
-    refreshVideoList(true);
-});
 document.getElementById("clear-video").addEventListener("click", function() {
     clear_video();
-    refreshVideoList(false);
 });
 document.getElementById("backtotop").addEventListener("click", function() {
     window.scrollTo(0, 0);
 })
 
-const imgs = document.getElementsByTagName("img");
-for (ele of imgs)
-{
+// const imgs = document.getElementsByTagName("img");
+// for (ele of imgs)
+// {
     // ele.addEventListener("contextmenu", function(e) { e.preventDefault(); });
-}
+// }
 
-function load_data()
+export function load_data(data)
 {
     // for (r of hardCodedData)
     // {
@@ -65,7 +63,7 @@ function load_data()
     document.getElementById("loading").style.display = "none";
     // if (shortsCount > 0)
     //     document.getElementById("shorts-feed").style.display = "block";
-    refreshVideoList(true);
+    refreshVideoList(data, true);
 }
 
 function create_html_video_item(r)
@@ -170,7 +168,7 @@ function create_html_shorts_item(r)
 
 var videoslistITV, shortslistITV;
 
-function refreshVideoList(doShuffle)
+export function refreshVideoList(data, doShuffle)
 {
     if (doShuffle)
         shuffle(data);
