@@ -28,16 +28,21 @@ function readSheetYT(sheet)
     return {links, apiKeys};
 }
 
-async function fetchDataYT(link, API_KEY)
+async function fetchDataYT(link, API_KEYs)
 {
     const ytVideo = get_videoID_from_link(link);
     if (ytVideo === null)
         return null;
     ytVideo.link = link;
 
-    const videoFetchURL = `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails&id=${ytVideo.id}&key=${API_KEY}`;
-
-    const videoResponse = await fetch(videoFetchURL);
+    
+    let videoResponse;
+    for (const API_KEY of API_KEYs) {
+        const videoFetchURL = `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails&id=${ytVideo.id}&key=${API_KEY}`;
+        videoResponse = await fetch(videoFetchURL);
+        if (videoResponse.ok) 
+            break;
+    }
     if (!videoResponse.ok)
         return null;
     const videoJSON = await videoResponse.json();
@@ -46,12 +51,20 @@ async function fetchDataYT(link, API_KEY)
         return null;
 
     const channelId = videoJSON.items[0].snippet.channelId;
-    const channelFetchURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`;
-
-    const channelResponse = await fetch(channelFetchURL);
+    
+    let channelResponse;
+    for (const API_KEY of API_KEYs) {
+        const channelFetchURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`;
+        channelResponse = await fetch(channelFetchURL);
+        if (channelResponse.ok)
+            break;
+    }
     if (!channelResponse.ok)
         return null;
     const channelJSON = await channelResponse.json();
+
+    if (!channelJSON.items.length)
+        return null;
 
     return {videoJSON, channelJSON, ytVideo};
 
@@ -85,4 +98,33 @@ function readDataYT(yt)
     videoData.status = "done";
 
     return videoData;
+}
+
+async function fetch_all(data) {
+    const sheetJSON = await fetchSheetYT();
+    const sheet = readSheetYT(sheetJSON);
+
+    sheet.links.push("https://youtu.be/pkmkb");
+
+    const promiseList = [];
+
+    for (const link of sheet.links) {
+        const ytPromise = fetchDataYT(link, sheet.apiKeys);
+        promiseList.push(ytPromise);
+    }
+
+    await Promise.all(promiseList)
+        .then((ytList) => {
+            for (const yt of ytList) {
+                if (yt === null) {
+                    data.push({status: "failed"});
+                    continue;
+                }
+                const videoData = readDataYT(yt);
+                data.push(videoData);
+            }
+        })
+        .catch((err) => {
+            console.log(`Error while fetching : ${err}`);
+        });
 }
