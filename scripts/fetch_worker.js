@@ -33,6 +33,7 @@ async function fetchDataYT(link, API_KEY)
     const ytVideo = get_videoID_from_link(link);
     if (ytVideo === null)
         return null;
+    ytVideo.link = link;
 
     const videoFetchURL = `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails&id=${ytVideo.id}&key=${API_KEY}`;
 
@@ -52,6 +53,36 @@ async function fetchDataYT(link, API_KEY)
         return null;
     const channelJSON = await channelResponse.json();
 
-    return {videoJSON, channelJSON};
+    return {videoJSON, channelJSON, ytVideo};
 
+}
+
+function readDataYT(yt)
+{
+    const videoData = {};
+
+    const videoSnippet = yt.videoJSON.items[0].snippet;
+    const videoStatistics = yt.videoJSON.items[0].statistics;
+    const videoContanetDetails = yt.videoJSON.items[0].contentDetails;
+
+    const channelSnippet = yt.channelJSON.items[0].snippet;
+    const channelStatistics = yt.channelJSON.items[0].statistics;
+
+    videoData.apiKey = "";
+    videoData.link = yt.ytVideo.link;
+    videoData.id = yt.ytVideo.id;
+    videoData.type = yt.ytVideo.type;
+    videoData.videoTitle = videoSnippet.title;
+    videoData.thumbnail = videoSnippet.thumbnails.default.url;
+    videoData.duration = convertDurationToHMS(videoContanetDetails.duration);
+    videoData.uploadTime = videoSnippet.publishedAt;
+    videoData.viewCount = videoStatistics.viewCount;
+    videoData.likeCount = videoStatistics.likeCount;
+    videoData.channelLink = `https://www.youtube.com/channel/${videoSnippet.channelId}`;
+    videoData.channelTitle = videoSnippet.channelTitle;
+    videoData.channelIcon = channelSnippet.thumbnails.default.url;
+    videoData.subscriberCount = channelStatistics.subscriberCount;
+    videoData.status = "done";
+
+    return videoData;
 }
