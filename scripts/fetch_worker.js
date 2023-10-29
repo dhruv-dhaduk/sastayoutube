@@ -100,31 +100,38 @@ function readDataYT(yt)
     return videoData;
 }
 
-async function fetch_all(data) {
-    const sheetJSON = await fetchSheetYT();
-    const sheet = readSheetYT(sheetJSON);
+async function fetchAll() {
 
-    sheet.links.push("https://youtu.be/pkmkb");
+    const timeStart = Date.now();
 
-    const promiseList = [];
+    return new Promise(async (resolve, reject) => {
+        const sheetJSON = await fetchSheetYT();
+        const sheet = readSheetYT(sheetJSON);
 
-    for (const link of sheet.links) {
-        const ytPromise = fetchDataYT(link, sheet.apiKeys);
-        promiseList.push(ytPromise);
-    }
+        const promiseList = [];
 
-    await Promise.all(promiseList)
-        .then((ytList) => {
-            for (const yt of ytList) {
-                if (yt === null) {
-                    data.push({status: "failed"});
-                    continue;
+        for (const link of sheet.links) {
+            const ytPromise = fetchDataYT(link, sheet.apiKeys);
+            promiseList.push(ytPromise);
+        }
+
+        Promise.all(promiseList)
+            .then((ytList) => {
+                const data = [];
+                for (const yt of ytList) {
+                    if (yt === null) {
+                        data.push({status: "failed"});
+                        continue;
+                    }
+                    const videoData = readDataYT(yt);
+                    data.push(videoData);
                 }
-                const videoData = readDataYT(yt);
-                data.push(videoData);
-            }
-        })
-        .catch((err) => {
-            console.log(`Error while fetching : ${err}`);
-        });
+                console.log(`TIME TAKEN = ${Date.now() - timeStart} mills`);
+                resolve(data);
+            })
+            .catch((err) => {
+                console.log(`Error while fetching : ${err}`);
+                reject(err);
+            });
+    });
 }
