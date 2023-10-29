@@ -25,7 +25,7 @@ function shortslist_right_scroll() {
         shortslist.scrollTo(shortslist.scrollLeft + shortslist.offsetWidth / 2, 0);
 }
 
-function check_max_shorts_scroll() {
+export function check_max_shorts_scroll() {
     const shortslistScrollLeftMax = shortslist.scrollWidth - shortslist.offsetWidth;
 
     if (shortslist.scrollLeft === 0) {

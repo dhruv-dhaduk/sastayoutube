@@ -1,5 +1,6 @@
 import { convert_number_format, convert_upload_time_format, shuffle } from "../lib.js";
 import { playingVideoData, play_video, clear_video } from "./player.js";
+import { check_max_shorts_scroll } from "./scroll.js";
 
 const loading = document.querySelector("#loading");
 const loadingItem = document.querySelector(".loading-item");
@@ -14,14 +15,6 @@ document.querySelector("#refresh").addEventListener("click", function() {
 
 document.querySelector("#backtotop").addEventListener("click", function() {
     window.scrollTo(0, 0);
-});
-
-document.querySelector("#yt").addEventListener("click", function() {
-    refreshVideoList(false);
-});
-
-document.querySelector("#shuffle").addEventListener("click", function() {
-    refreshVideoList(true);
 });
 
 document.querySelector("#closevideo").addEventListener("click", function() {
@@ -164,7 +157,7 @@ function create_html_shorts_item(s)
 }
 
 var videoslistITV, shortslistITV;
-function refreshVideoList(data, doShuffle)
+export function refreshVideoList(data, doShuffle)
 {
     if (doShuffle)
         shuffle(data);
@@ -174,7 +167,7 @@ function refreshVideoList(data, doShuffle)
     const videolist = document.querySelector("#video-feed");
     videolist.innerHTML = "";
     shortslist.innerHTML = "";
-    // check_max_shorts_scroll();
+    check_max_shorts_scroll();
     videolist.append(shortsfeed);
 
     if (playingVideoData === undefined)
