@@ -1,3 +1,5 @@
+import { get_videoID_from_link, get_thumbnail_url, convertDurationToHMS } from "./lib.js";
+
 async function fetchSheetYT()
 {   
     const sheetId = "1xTdT1nE-vP_P3iG7sE1WCkGzr9U-vILrwah0D_iiEZ4";
@@ -100,7 +102,7 @@ function readDataYT(yt)
     return videoData;
 }
 
-async function fetchAll() {
+export async function fetchAll() {
 
     return new Promise(async (resolve, reject) => {
         const sheetJSON = await fetchSheetYT();

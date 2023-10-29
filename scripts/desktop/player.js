@@ -1,6 +1,8 @@
-var playingVideoData;
+import { convert_number_format, convert_upload_time_format } from "../lib.js";
 
-function play_video(videoData)
+export var playingVideoData;
+
+export function play_video(videoData)
 {
     if (playingVideoData != undefined)
         playingVideoData["htmlItem"].style.display = "block";
@@ -34,7 +36,7 @@ function play_video(videoData)
     window.scrollTo(0, 0);
 }
 
-function clear_video()
+export function clear_video()
 {
     const videoFeed = document.querySelector("#video-feed");
     videoFeed.style.flexBasis = "";

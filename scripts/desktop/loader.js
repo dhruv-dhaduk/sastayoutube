@@ -1,3 +1,6 @@
+import { convert_number_format, convert_upload_time_format, shuffle } from "../lib.js";
+import { playingVideoData, play_video, clear_video } from "./player.js";
+
 const loading = document.querySelector("#loading");
 const loadingItem = document.querySelector(".loading-item");
 loading.innerHTML = "";
@@ -36,7 +39,7 @@ window.addEventListener("resize", function() {
 // }
 // load_data();
 
-function load_data() 
+export function load_data(data) 
 {
     const feed = document.querySelector("#video-feed");
     for (const r of data) 
@@ -59,7 +62,7 @@ function load_data()
 
     loading.style.display = "none";
 
-    refreshVideoList(true);
+    refreshVideoList(data, true);
 }
 
 function create_html_video_item(v) 
@@ -161,7 +164,7 @@ function create_html_shorts_item(s)
 }
 
 var videoslistITV, shortslistITV;
-function refreshVideoList(doShuffle)
+function refreshVideoList(data, doShuffle)
 {
     if (doShuffle)
         shuffle(data);
@@ -171,7 +174,7 @@ function refreshVideoList(doShuffle)
     const videolist = document.querySelector("#video-feed");
     videolist.innerHTML = "";
     shortslist.innerHTML = "";
-    check_max_shorts_scroll();
+    // check_max_shorts_scroll();
     videolist.append(shortsfeed);
 
     if (playingVideoData === undefined)

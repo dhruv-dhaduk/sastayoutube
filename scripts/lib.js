@@ -1,4 +1,4 @@
-function get_videoID_from_link(link) 
+export function get_videoID_from_link(link) 
 {
     var url;
     try {
@@ -35,7 +35,7 @@ function get_videoID_from_link(link)
     }
 }
 
-function get_thumbnail_url(thumbnails)
+export function get_thumbnail_url(thumbnails)
 {
     var thumbnail;
 
@@ -64,7 +64,7 @@ function get_thumbnail_url(thumbnails)
     return thumbnail;
 }
 
-function convertDurationToHMS(duration) {
+export function convertDurationToHMS(duration) {
     const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
     const hours = (parseInt(match[1]) || 0);
     const minutes = (parseInt(match[2]) || 0);
@@ -76,7 +76,7 @@ function convertDurationToHMS(duration) {
         return `${hours.toString()}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function convert_number_format(n, suffix)
+export function convert_number_format(n, suffix)
 {
     if (n == undefined)
         return "N/A " + suffix;
@@ -91,7 +91,7 @@ function convert_number_format(n, suffix)
         return n.toString() + " " + suffix;
 }
 
-function convert_upload_time_format(uploadTime)
+export function convert_upload_time_format(uploadTime)
 {   
     if (uploadTime == undefined)
         return "N/A";
@@ -115,7 +115,7 @@ function convert_upload_time_format(uploadTime)
         return "just now";
 }
 
-function time_relative_to(timediff, unitTime, label)
+export function time_relative_to(timediff, unitTime, label)
 {
     const x = parseInt(timediff / unitTime);
 
@@ -125,7 +125,7 @@ function time_relative_to(timediff, unitTime, label)
         return x + " " + label + " ago";
 }
 
-function shuffle(array) 
+export function shuffle(array) 
 {
     for (let i = array.length - 1; i > 0; i--) 
     {

@@ -1,4 +1,4 @@
-const hardCodedData = [
+export const hardCodedData = [
   {
       "link": "https://youtu.be/vCEDptvB5Q4",
       "status": "done",
