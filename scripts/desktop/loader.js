@@ -28,7 +28,7 @@ document.querySelector("#closevideo").addEventListener("click", function() {
 window.addEventListener("resize", function() {
     if (playingVideoData !== undefined)
         window.scrollTo(0, 0);
-})
+});
 
 // const data = [];
 // for (r of hardCodedData) {

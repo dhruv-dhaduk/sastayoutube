@@ -86,7 +86,7 @@ function readDataYT(yt)
     videoData.id = yt.ytVideo.id;
     videoData.type = yt.ytVideo.type;
     videoData.videoTitle = videoSnippet.title;
-    videoData.thumbnail = videoSnippet.thumbnails.default.url;
+    videoData.thumbnail = get_thumbnail_url(videoSnippet.thumbnails);
     videoData.duration = convertDurationToHMS(videoContanetDetails.duration);
     videoData.uploadTime = videoSnippet.publishedAt;
     videoData.viewCount = videoStatistics.viewCount;
