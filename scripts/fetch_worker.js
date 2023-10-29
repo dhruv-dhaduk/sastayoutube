@@ -26,4 +26,32 @@ function readSheetYT(sheet)
     }
 
     return {links, apiKeys};
-} 
+}
+
+async function fetchDataYT(link, API_KEY)
+{
+    const ytVideo = get_videoID_from_link(link);
+    if (ytVideo === null)
+        return null;
+
+    const videoFetchURL = `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails&id=${ytVideo.id}&key=${API_KEY}`;
+
+    const videoResponse = await fetch(videoFetchURL);
+    if (!videoResponse.ok)
+        return null;
+    const videoJSON = await videoResponse.json();
+
+    if (!videoJSON.items.length)
+        return null;
+
+    const channelId = videoJSON.items[0].snippet.channelId;
+    const channelFetchURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`;
+
+    const channelResponse = await fetch(channelFetchURL);
+    if (!channelResponse.ok)
+        return null;
+    const channelJSON = await channelResponse.json();
+
+    return {videoJSON, channelJSON};
+
+}
