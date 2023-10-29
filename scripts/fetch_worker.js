@@ -11,3 +11,19 @@ async function fetchSheetYT()
 
     return JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
 }
+
+function readSheetYT(sheet)
+{
+    const links = [];
+    const apiKeys = [];
+
+    for (const row of sheet.table.rows) {
+        if (row.c[1] != null)
+            links.push(row.c[1].v);
+
+        if (row.c[2] != null)
+            apiKeys.push(row.c[2].v);
+    }
+
+    return {links, apiKeys};
+} 
