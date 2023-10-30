@@ -1,5 +1,6 @@
 import { isMobileDevice } from "../device.js";
-import { load_data, refreshVideoList } from "./loader.js";
+import { load_data } from "./loader.js";
+import { refreshVideoList } from "./refresh.js";
  
 if(!isMobileDevice())
 {

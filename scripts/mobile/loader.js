@@ -1,5 +1,6 @@
-import { convert_number_format, convert_upload_time_format, shuffle } from "../lib.js";
-import { playingVideoData, play_video, clear_video } from "./player.js";
+import { convert_number_format, convert_upload_time_format } from "../lib.js";
+import { play_video, clear_video } from "./player.js";
+import { refreshVideoList } from "./refresh.js";
 
 const loading = document.getElementById("loading");
 const loadingItem = document.getElementById("loading-item-template").content;
@@ -96,57 +97,7 @@ function create_html_shorts_item(r)
     r.htmlItem = item;
 }
 
-var videoslistITV, shortslistITV;
-
-export function refreshVideoList(data, doShuffle)
-{
-    if (doShuffle)
-        shuffle(data);
-
-    const videoslist = document.getElementById("video-list");
-    videoslist.innerHTML = "";
-
-    const shortsfeedList = create_shorts_feed();
-    const shortsfeed = shortsfeedList[0];
-    const shortslist = shortsfeedList[1];
-    
-    clearInterval(videoslistITV);
-    clearInterval(shortslistITV);
-    
-    var videosCt = 0;
-    videoslistITV = setInterval(() => {
-        if (videoslist.childElementCount == 1)
-            videoslist.append(shortsfeed);
-
-        while ((videosCt < data.length) && (data[videosCt]["status"] != "done" || data[videosCt]["type"] != "video"))
-        videosCt++;
-    
-        if (videosCt >= data.length) {
-            clearInterval(videoslistITV);
-            return;
-        }
-        
-        videoslist.append(data[videosCt]["htmlItem"]);
-        videosCt++;
-    }, 100);
-
-    var shortsCt = 0;
-    shortslistITV = setInterval(() => {
-        while ((shortsCt < data.length) && (data[shortsCt]["status"] != "done" || data[shortsCt]["type"] != "short"))
-            shortsCt++;
-
-        if (shortsCt >= data.length) {
-            clearInterval(shortslistITV);
-            return;
-        }
-
-        shortslist.append(data[shortsCt]["htmlItem"]);
-        shortsCt++;
-    }, 100);
-
-}
-
-function create_shorts_feed()
+export function create_shorts_feed()
 {
     const shortsFeed = document.querySelector("#shorts-feed-template").content.querySelector(".shorts-feed").cloneNode(true);
     const shortsIcon = shortsFeed.querySelector(".shorts-icon");
