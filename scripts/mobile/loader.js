@@ -68,68 +68,34 @@ export function load_data(data)
 function create_html_video_item(r)
 {
     const middle_dot = " <span class=\"dot\">&#183</span> ";
-
-    const container = document.createElement("div");
-            const thumb_container = document.createElement("div");
-                const thumbnail = document.createElement("img");
-                const duration = document.createElement("p");
-            const video_item_info = document.createElement("div");
-                const channel_icon_container = document.createElement("a");
-                    const channel_icon = document.createElement("img");
-                const video_item_texts = document.createElement("div");
-                    const video_title = document.createElement("p");
-                    const additional_data = document.createElement("p");
-                const three_dots_container = document.createElement("a");
-                    const three_dots = document.createElement("img");
-
     
-    channel_icon_container.href = "https://www.youtube.com";
-    three_dots_container.href = 'https://www.youtube.com';
+    const videoItem = document.querySelector("#video-item-template").content.querySelector(".video-item").cloneNode(true);
+    const thumbnailImg = videoItem.querySelector(".thumbnail-img");
+    const duration = videoItem.querySelector(".duration");
+    const channelIconContainer = videoItem.querySelector(".channel-icon-container");
+    const channelIcon = channelIconContainer.querySelector(".channel-icon");
+    const videoItemTexts = videoItem.querySelector(".video-item-texts");
+    const videoTitle = videoItemTexts.querySelector(".video-title");
+    const videoAdditionalData = videoItemTexts.querySelector(".video-additional-data");
+    const threeDotsContainer = videoItem.querySelector(".video-three-dots-container");
+    const threeDots = threeDotsContainer.querySelector(".video-three-dots");
 
-    container.className = "video-item";
-    container.addEventListener("click", function() { play_video(r) });
-        thumb_container.className = "thumbnail-container";
-            thumbnail.className = "thumbnail-img";
-            thumbnail.src = r["thumbnail"];
-            thumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); }); 
-            // thumbnail.addEventListener("click", function() { play_video(r); });
-            duration.className = "duration";
-            duration.innerHTML = r["duration"];
-        video_item_info.className = "video-item-info";
-            channel_icon_container.className = "channel-icon-container";
-            channel_icon_container.href = r["channelLink"];
-            channel_icon_container.target = "_blank";
-                channel_icon.className =  "channel-icon";
-                channel_icon.src = r["channelIcon"];
-                channel_icon.addEventListener("contextmenu",function(e) { e.preventDefault(); });
-                channel_icon.addEventListener("click", function() { window.open(r["channelLink"], "_blank"); });
-            video_item_texts.className = "video-item-texts";
-            video_item_texts.addEventListener("click", function() { play_video(r); });
-                video_title.className = "video-title";
-                video_title.innerHTML = r["videoTitle"];
-                additional_data.className = "video-additional-data";
-                additional_data.innerHTML = r["channelTitle"] + middle_dot + convert_number_format(r["viewCount"], "views") + middle_dot + convert_upload_time_format(r["uploadTime"]);
-            three_dots_container.className = "video-three-dots-container";
-            three_dots_container.href = r["link"];
-            three_dots_container.target = "_blank";
-                three_dots.className = "video-three-dots";
-                three_dots.src = "https://dhruv-dhaduk.github.io/assets/logos/white/three_dots_white.png";
-                three_dots.addEventListener("contextmenu", function(e) { e.preventDefault(); });
-                three_dots.addEventListener("click", function() { window.open(r["link"], "_blank"); });
+    videoItem.addEventListener("click", function() { play_video(r); });
+    thumbnailImg.src = r.thumbnail;
+    thumbnailImg.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    duration.innerHTML = r.duration;
+    channelIconContainer.href = r.channelLink;
+    channelIcon.src = r.channelIcon;
+    channelIcon.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    channelIcon.addEventListener("click", function(e) { window.open(r.channelLink, "_blank"); });
+    videoItemTexts.addEventListener("click", function() { play_video(r); });
+    videoTitle.innerHTML = r.videoTitle;
+    videoAdditionalData.innerHTML = r.channelTitle + middle_dot + convert_number_format(r.viewCount, "views") + middle_dot + convert_upload_time_format(r.uploadTime);
+    threeDotsContainer.href = r.link;
+    threeDots.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    threeDots.addEventListener("click", function() { window.open(r.link, "_blank"); });
 
-        video_item_texts.append(video_title);
-        video_item_texts.append(additional_data);
-        thumb_container.append(thumbnail);
-        thumb_container.append(duration);
-        channel_icon_container.append(channel_icon);
-        three_dots_container.append(three_dots);
-        video_item_info.append(channel_icon_container);
-        video_item_info.append(video_item_texts);
-        video_item_info.append(three_dots_container);
-        container.append(thumb_container);
-        container.append(video_item_info);
-
-        r["htmlItem"] = container;
+    r.htmlItem = videoItem;
 }
 
 function create_html_shorts_item(r)
