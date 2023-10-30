@@ -100,35 +100,18 @@ function create_html_video_item(r)
 
 function create_html_shorts_item(r)
 {
-    const item = document.createElement("a");
-        const thumb = document.createElement("img");
-        const texts = document.createElement("div");
-            const title = document.createElement("p");
-            const views = document.createElement("p");
+    const item = document.querySelector("#shorts-item-template").content.querySelector(".shorts-item").cloneNode(true);
+    const thumbnail = item.querySelector(".shorts-thumbnail");
+    const title = item.querySelector(".shorts-title");
+    const views = item.querySelector(".shorts-views");
 
-    item.className = "shorts-item";
-    item.href = r["link"];
-    item.target = "_blank";
-    // item.addEventListener("click", function() {
-    //     window.open(r["link"], "_blank");
-    // });
-        thumb.className = "shorts-thumbnail";
-        thumb.src = r["thumbnail"];
-        thumb.addEventListener("contextmenu", function(e) { e.preventDefault(); }); 
-        texts.className = "shorts-text";
-            title.className = "shorts-title";
-            title.innerHTML = r["videoTitle"];
-            views.className = "shorts-views";
-            views.innerHTML = convert_number_format(r["viewCount"], "views");
-        
-    texts.append(title);
-    texts.append(views);
-    item.append(thumb);
-    item.append(texts);
+    item.href = r.link;
+    thumbnail.src = r.thumbnail;
+    thumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    title.innerHTML = r.videoTitle;
+    views.innerHTML = convert_number_format(r.viewCount, "views");
 
-    r["htmlItem"] = item;
-
-    // l.append(item);
+    r.htmlItem = item;
 }
 
 var videoslistITV, shortslistITV;
