@@ -1,4 +1,4 @@
-import { get_videoID_from_link, get_thumbnail_url, convertDurationToHMS } from "./lib.js";
+import { get_videoID_from_link, get_thumbnail_url, convertDurationToHMS, shuffle } from "./lib.js";
 
 addEventListener("message", function(msg) {
     if (msg.data.command === "fetchAll") {
@@ -7,7 +7,7 @@ addEventListener("message", function(msg) {
             postMessage({videos});
         })
         .catch((error) => {
-            this.postMessage({error});
+            postMessage({error});
         });
     }
 });
@@ -119,6 +119,8 @@ export async function fetchAll() {
     return new Promise(async (resolve, reject) => {
         const sheetJSON = await fetchSheetYT();
         const sheet = readSheetYT(sheetJSON);
+
+        shuffle(sheet.apiKeys);
 
         const promiseList = [];
 
