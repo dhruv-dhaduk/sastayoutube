@@ -1,25 +1,6 @@
 import { convert_number_format, convert_upload_time_format } from "../lib.js";
-import { play_video, clear_video } from "./player.js";
+import { play_video } from "./player.js";
 import { refreshVideoList } from "./refresh.js";
-
-const loading = document.getElementById("loading");
-const loadingItem = document.getElementById("loading-item-template").content;
-const loadingItemSize = 4;
-for (var i = 0; i < loadingItemSize; i++)
-    loading.append(loadingItem.cloneNode(true));
-
-document.getElementById("yt").addEventListener("click",function() {
-    clear_video();
-});
-document.getElementById("refresh").addEventListener("click", function() {
-    window.location.reload();
-});
-document.getElementById("clear-video").addEventListener("click", function() {
-    clear_video();
-});
-document.getElementById("backtotop").addEventListener("click", function() {
-    window.scrollTo(0, 0);
-});
 
 export function load_data(data)
 {
