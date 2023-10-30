@@ -166,30 +166,13 @@ export function refreshVideoList(data, doShuffle)
 
 function create_shorts_feed()
 {
-    const shortsFeed = document.createElement("div");
-        const shortsHeader = document.createElement("div");
-            const shortsIconText = document.createElement("div");
-                const shortsIcon = document.createElement("img");
-                const shortsHeading = document.createElement("span");
-        const shortsList = document.createElement("div");
+    const shortsFeed = document.querySelector("#shorts-feed-template").content.querySelector(".shorts-feed").cloneNode(true);
+    const shortsIcon = shortsFeed.querySelector(".shorts-icon");
+    const shortsList = shortsFeed.querySelector(".shorts-list");
 
-    shortsFeed.className = "shorts-feed";
     shortsFeed.id = "shorts-feed";
-        shortsHeader.className = "shorts-header";
-            shortsIconText.className = "shorts-icon-text";
-                shortsIcon.className = "shorts-icon";
-                shortsIcon.src = "https://dhruv-dhaduk.github.io/assets/logos/colored/shorts.png";
-                shortsIcon.addEventListener("contextmenu", function(e) { e.preventDefault(); });
-                shortsHeading.className = "shorts-heading";
-                shortsHeading.innerHTML = "Shorts";
-        shortsList.className = "shorts-list";
-        shortsList.id = "shorts-list";
-
-    shortsIconText.append(shortsIcon);
-    shortsIconText.append(shortsHeading);
-    shortsHeader.append(shortsIconText);
-    shortsFeed.append(shortsHeader);
-    shortsFeed.append(shortsList);
+    shortsList.id = "shorts-list";
+    shortsIcon.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 
     return [shortsFeed, shortsList];
 }
