@@ -1,6 +1,5 @@
 import { isMobileDevice } from "../device.js";
 import { load_data, refreshVideoList } from "./loader.js";
-import { fetchAll } from "../fetch_worker.js";
  
 if(!isMobileDevice())
 {
@@ -8,14 +7,21 @@ if(!isMobileDevice())
 }
 
 let data;
-fetchAll()
-.then((videos) => {
-    data = videos;
-    load_data(data);
-})
-.catch((err) => {
-    alert(`Error while fetching data : ${err}`);
+
+const fetchWorker = new Worker("./scripts/fetch_worker.js", {type: "module"});
+fetchWorker.addEventListener("message", function(msg) {
+    if (msg.data.error) {
+        const err = `Error while fetching data :${msg.data.error}`;
+        console.log(err);
+        alert(err);
+    }
+    else {
+        data = msg.data.videos;
+        console.log(data);
+        load_data(data);
+    }
 });
+fetchWorker.postMessage({command: "fetchAll"});
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("shuffle").addEventListener("click", function() {
