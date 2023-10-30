@@ -25,12 +25,6 @@ window.addEventListener("resize", function() {
         window.scrollTo(0, 0);
 });
 
-// const data = [];
-// for (r of hardCodedData) {
-//     data.push(r);
-// }
-// load_data();
-
 export function load_data(data) 
 {
     const feed = document.querySelector("#video-feed");
