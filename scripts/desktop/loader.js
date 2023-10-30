@@ -1,29 +1,29 @@
 import { convert_number_format, convert_upload_time_format } from "../lib.js";
-import { playingVideoData, play_video, clear_video } from "./player.js";
+import { play_video } from "./player.js";
 import { refreshVideoList } from "./refresh.js";
 
-const loading = document.querySelector("#loading");
-const loadingItem = document.querySelector("#loading-item-template").content;
-const loadingItemCount = 12;
-for (var i = 0; i < loadingItemCount; i++)
-    loading.append(loadingItem.cloneNode(true));
+// const loading = document.querySelector("#loading");
+// const loadingItem = document.querySelector("#loading-item-template").content;
+// const loadingItemCount = 12;
+// for (var i = 0; i < loadingItemCount; i++)
+//     loading.append(loadingItem.cloneNode(true));
 
-document.querySelector("#refresh").addEventListener("click", function() {
-    window.location.reload();
-});
+// document.querySelector("#refresh").addEventListener("click", function() {
+//     window.location.reload();
+// });
 
-document.querySelector("#backtotop").addEventListener("click", function() {
-    window.scrollTo(0, 0);
-});
+// document.querySelector("#backtotop").addEventListener("click", function() {
+//     window.scrollTo(0, 0);
+// });
 
-document.querySelector("#closevideo").addEventListener("click", function() {
-    clear_video();
-});
+// document.querySelector("#closevideo").addEventListener("click", function() {
+//     clear_video();
+// });
 
-window.addEventListener("resize", function() {
-    if (playingVideoData !== undefined)
-        window.scrollTo(0, 0);
-});
+// window.addEventListener("resize", function() {
+//     if (playingVideoData !== undefined)
+//         window.scrollTo(0, 0);
+// });
 
 export function load_data(data) 
 {
