@@ -94,31 +94,18 @@ function create_html_video_item(v)
 
 function create_html_shorts_item(s) 
 {
-    const item = document.createElement("a");
-        const shortsThumbnail = document.createElement("img");
-        const shortsText = document.createElement("div");
-            const shortsTitle = document.createElement("p");
-            const shortsViews = document.createElement("p");
+    const item = document.querySelector("#shorts-item-template").content.firstElementChild.cloneNode(true);
+    const shortsThumbnail = item.querySelector(".shorts-thumbnail");
+    const shortsTitle = item.querySelector(".shorts-title");
+    const shortsViews = item.querySelector(".shorts-views");
 
-    item.className = "shorts-item";
-    item.href = s["link"];
-    item.target = "_blank";
-        shortsThumbnail.className = "shorts-thumbnail";
-        shortsThumbnail.src = s["thumbnail"];
-        shortsThumbnail.draggable = false;
-        shortsThumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); });
-        shortsText.className = "shorts-text";
-            shortsTitle.className = "shorts-title";
-            shortsTitle.innerHTML = s["videoTitle"];
-            shortsViews.className = "shorts-views";
-            shortsViews.innerHTML = convert_number_format(s["viewCount"], "views");
+    item.href = s.link;
+    shortsThumbnail.src = s.thumbnail;
+    shortsThumbnail.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+    shortsTitle.innerHTML = s.videoTitle;
+    shortsViews.innerHTML = convert_number_format(s.viewCount, "views");
     
-    shortsText.append(shortsTitle);
-    shortsText.append(shortsViews);
-    item.append(shortsThumbnail);
-    item.append(shortsText);
-
-    s["htmlItem"] = item;
+    s.htmlItem = item;
 }
 
 var videoslistITV, shortslistITV;
