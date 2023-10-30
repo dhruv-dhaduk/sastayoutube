@@ -1,5 +1,17 @@
 import { get_videoID_from_link, get_thumbnail_url, convertDurationToHMS } from "./lib.js";
 
+addEventListener("message", function(msg) {
+    if (msg.data.command === "fetchAll") {
+        fetchAll()
+        .then((videos) => {
+            postMessage({videos});
+        })
+        .catch((error) => {
+            this.postMessage({error});
+        });
+    }
+});
+
 async function fetchSheetYT()
 {   
     const sheetId = "1xTdT1nE-vP_P3iG7sE1WCkGzr9U-vILrwah0D_iiEZ4";
