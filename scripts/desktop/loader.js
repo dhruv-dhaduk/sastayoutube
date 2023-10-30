@@ -3,8 +3,7 @@ import { playingVideoData, play_video, clear_video } from "./player.js";
 import { check_max_shorts_scroll } from "./scroll.js";
 
 const loading = document.querySelector("#loading");
-const loadingItem = document.querySelector(".loading-item");
-loading.innerHTML = "";
+const loadingItem = document.querySelector("#loading-item-template").content;
 const loadingItemCount = 12;
 for (var i = 0; i < loadingItemCount; i++)
     loading.append(loadingItem.cloneNode(true));
