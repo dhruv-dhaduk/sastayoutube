@@ -4,8 +4,7 @@ import { playingVideoData, play_video, clear_video } from "./player.js";
 // document.addEventListener("DOMContentLoaded", load_data());
 
 const loading = document.getElementById("loading");
-const loadingItem = document.getElementsByClassName("loading-item")[0];
-loading.innerHTML = "";
+const loadingItem = document.getElementById("loading-item-template").content;
 const loadingItemSize = 4;
 for (var i = 0; i < loadingItemSize; i++)
     loading.append(loadingItem.cloneNode(true));
