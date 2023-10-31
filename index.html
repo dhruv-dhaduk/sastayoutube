@@ -8,10 +8,6 @@
         <style>
             body {
                 background-color: black;
-                color: white;
-                font-family: sans-serif;
-                font-weight: bold;
-                font-size: 2.5rem;
 
                 height: 100dvh;
                 margin: 0;
@@ -21,18 +17,22 @@
                 justify-content: center;
                 align-items: center;
             }
+
+            img {
+                width: 70vmin;
+            }
         </style>
 
         <script type="module">
             import { isMobileDevice } from "./scripts/device.js";
 
-            if(isMobileDevice())
-                window.location.href = "youtubeM.html";
-            else
-                window.location.href = "youtube.html";
+            // if(isMobileDevice())
+            //     window.location.href = "youtubeM.html";
+            // else
+            //     window.location.href = "youtube.html";
         </script>
     </head>
     <body">
-        <p>सस्ता YouTube</p>
+        <img src="https://dhruv-dhaduk.github.io/assets/logos/colored/sasta_yt.png">
     </body>
 </html>
