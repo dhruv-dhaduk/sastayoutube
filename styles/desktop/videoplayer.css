@@ -22,11 +22,6 @@
     height: fit-content;
 }
 
-/* .video-feed {
-    flex-basis: 22rem;
-    margin-right: 0;
-} */
-
 @media (max-width: 70rem) {
     .main-container {
         display: block;
