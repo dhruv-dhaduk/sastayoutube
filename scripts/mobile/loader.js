@@ -4,8 +4,6 @@ import { refreshVideoList } from "./refresh.js";
 
 export function load_data(data)
 {
-    var shortsCount = 0;
-    
     for (const r of data) 
     {
         r["apiKey"] = "";
@@ -13,19 +11,16 @@ export function load_data(data)
             continue;
         }
 
-        if (r["type"] == "video") {
+        if (r["type"] == "video")
             create_html_video_item(r);
-        }
-        else if (r["type"] == "short") {
+        else if (r["type"] == "short")
             create_html_shorts_item(r);
-            shortsCount++;
-        }
-        else {
+        else
             r["htmlItem"] = "";
-        }
     }
     
-    document.getElementById("loading").style.display = "none";
+    document.querySelector("#loading").style.display = "none";
+
     refreshVideoList(data, true);
 }
 

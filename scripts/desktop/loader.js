@@ -4,7 +4,6 @@ import { refreshVideoList } from "./refresh.js";
 
 export function load_data(data) 
 {
-    const feed = document.querySelector("#video-feed");
     for (const r of data) 
     {   
         r["apiKey"] = "";
@@ -12,18 +11,15 @@ export function load_data(data)
             continue;
         }
 
-        if (r["type"] == "video") {
+        if (r["type"] == "video")
             create_html_video_item(r);
-        }
-        else if (r["type"] == "short") {
+        else if (r["type"] == "short")
             create_html_shorts_item(r);
-        }
-        else {
+        else
             r["htmlItem"] = "";
-        }
     }
 
-    loading.style.display = "none";
+    document.querySelector("#loading").style.display = "none";
 
     refreshVideoList(data, true);
 }
@@ -31,7 +27,7 @@ export function load_data(data)
 function create_html_video_item(v) 
 {
     const middle_dot = " <span class=\"dot\">&#183</span> ";
-    const videoItem = document.querySelector("#video-item-template").content.firstElementChild.cloneNode(true);
+    const videoItem = document.querySelector("#video-item-template").content.querySelector(".video-item").cloneNode(true);
 
     const thumbnailImg = videoItem.querySelector(".thumbnail-img");
     const duration = videoItem.querySelector(".duration");
@@ -65,7 +61,7 @@ function create_html_video_item(v)
 
 function create_html_shorts_item(s) 
 {
-    const item = document.querySelector("#shorts-item-template").content.firstElementChild.cloneNode(true);
+    const item = document.querySelector("#shorts-item-template").content.querySelector(".shorts-item").cloneNode(true);
     const shortsThumbnail = item.querySelector(".shorts-thumbnail");
     const shortsTitle = item.querySelector(".shorts-title");
     const shortsViews = item.querySelector(".shorts-views");
