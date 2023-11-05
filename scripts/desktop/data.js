@@ -7,7 +7,7 @@ export function start_fetching()
     const fetchWorker = new Worker("./scripts/fetch_worker.js", {type: "module"});
     fetchWorker.addEventListener("message", function(msg) {
         if (msg.data.error) {
-            const err = `Erro while fetching data : ${msg.data.error}`;
+            const err = `Error while fetching data : ${msg.data.error}`;
             console.log(err);
             alert(err);
         }
