@@ -1,47 +1,47 @@
 import { convert_number_format, convert_upload_time_format } from "../lib.js";
 
-export var playingVideoData;
+export let playingVideoData;
 
 export function play_video(videoData)
 {
-	const videoFeed = document.getElementById("video-feed");
-	const playerParent = document.getElementById("videoplayer-container");
-	playerParent.innerHTML = "";
-
-	const videoPlayerHTML = "<iframe class=\"videoplayer\" id=\"videoplayer\" src=\"https://www.youtube.com/embed/" + videoData["id"] + "?autoplay=1&mute=1&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"autoplay; picture-in-picture;\" allowfullscreen></iframe>";
-
-	playerParent.innerHTML = videoPlayerHTML;
-	videoFeed.style.marginTop = "calc(0.5625 * 100vw + 3rem)";
-	document.getElementById("videoplay-info").style.display = "block";
-	document.getElementById("videoplay-title").innerHTML = videoData["videoTitle"];
-	document.getElementById("videoplay-views").innerHTML = convert_number_format(videoData["viewCount"], "views");
-	document.getElementById("videoplay-uploaded").innerHTML = convert_upload_time_format(videoData["uploadTime"]);
-	document.getElementById("videoplay-channelIcon").src = videoData["channelIcon"];
-	document.getElementById("videoplay-channelTitle").innerHTML = videoData["channelTitle"];
-	document.getElementById("videoplay-subscribers").innerHTML = convert_number_format(videoData["subscriberCount"], "");
-	document.getElementById("videoplay-likes").innerHTML = convert_number_format(videoData["likeCount"], "");
-
 	if (playingVideoData != undefined)
-		playingVideoData["htmlItem"].style.display = "block";
-
-	videoData["htmlItem"].style.display = "none";
+		playingVideoData.htmlItem.style.display = "block";
+	videoData.htmlItem.style.display = "none";
 	playingVideoData = videoData;
 
-	const old_share = document.getElementById("shareBtn");
+	const playerParent = document.getElementById("videoplayer-container");
+	const videoFeed = document.getElementById("video-feed");
+	
+	playerParent.innerHTML = "";
+	const videoPlayerHTML = "<iframe class=\"videoplayer\" id=\"videoplayer\" src=\"https://www.youtube.com/embed/" + videoData["id"] + "?autoplay=1&mute=1&rel=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"autoplay; picture-in-picture;\" allowfullscreen></iframe>";
+	playerParent.innerHTML = videoPlayerHTML;
+	
+	videoFeed.style.marginTop = "calc(0.5625 * 100vw + 3rem)";
+	document.querySelector("#videoplay-info").style.display = "block";
+	
+	document.querySelector("#videoplay-title").innerHTML = videoData.videoTitle;
+	document.querySelector("#videoplay-views").innerHTML = convert_number_format(videoData.viewCount, "views");
+	document.querySelector("#videoplay-uploaded").innerHTML = convert_upload_time_format(videoData.uploadTime);
+	document.querySelector("#videoplay-channelIcon").src = videoData.channelIcon;
+	document.querySelector("#videoplay-channelTitle").innerHTML = videoData.channelTitle;
+	document.querySelector("#videoplay-subscribers").innerHTML = convert_number_format(videoData.subscriberCount, "");
+	document.querySelector("#videoplay-likes").innerHTML = convert_number_format(videoData.likeCount, "");
+
+	const old_share = document.querySelector("#shareBtn");
 	const new_share = old_share.cloneNode(true);
 	old_share.replaceWith(new_share);
-	new_share.addEventListener("click", function() {
+	new_share.addEventListener("click", () => {
 		navigator.share({
-			title: videoData["videoTitle"],
-			url: videoData["link"]
+			title: videoData.videoTitle,
+			url: videoData.link
 		});
 	});
 
-	const old_subscribe = document.getElementById("subscribeBtn");
+	const old_subscribe = document.querySelector("#subscribeBtn");
 	const new_subscribe = old_subscribe.cloneNode(true);
 	old_subscribe.replaceWith(new_subscribe);
-	new_subscribe.addEventListener("click", function() {
-		window.open(videoData["channelLink"], "_blank");
+	new_subscribe.addEventListener("click", () => {
+		window.open(videoData.channelLink, "_blank");
 	});
 	
 	window.scrollTo(0, 0);
@@ -49,10 +49,12 @@ export function play_video(videoData)
 
 export function clear_video()
 {
-	document.getElementById("video-feed").style.marginTop = "3rem";
-	document.getElementById("videoplayer-container").innerHTML = "";
-	document.getElementById("videoplay-info").style.display = "none";
+	document.querySelector("#video-feed").style.marginTop = "3rem";
+	document.querySelector("#videoplayer-container").innerHTML = "";
+	document.querySelector("#videoplay-info").style.display = "none";
 
 	if (playingVideoData != undefined)
-		playingVideoData["htmlItem"].style.display = "block";
+		playingVideoData.htmlItem.style.display = "block";
+
+	playingVideoData = undefined;
 }
