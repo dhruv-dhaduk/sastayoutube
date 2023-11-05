@@ -5,33 +5,25 @@ import { data } from "./data.js";
 export function init()
 {
     const loading = document.querySelector("#loading");
-    const loadingItem = document.querySelector("#loading-item-template").content;
+    const loadingItem = document.querySelector("#loading-item-template").content.querySelector(".loading-item");
     const loadingItemCount = 12;
-    for (var i = 0; i < loadingItemCount; i++)
+    for (let i = 0; i < loadingItemCount; i++)
         loading.append(loadingItem.cloneNode(true));
+    
+    document.querySelector("#yt").addEventListener("click", () => { refreshVideoList(data, false); });
 
-    document.querySelector("#refresh").addEventListener("click", function() {
-        window.location.reload();
-    });
+    document.querySelector("#closevideo").addEventListener("click", () => { clear_video(); });
     
-    document.querySelector("#backtotop").addEventListener("click", function() {
-        window.scrollTo(0, 0);
-    });
+    document.querySelector("#refresh").addEventListener("click", () => { window.location.reload(); });
     
-    document.querySelector("#closevideo").addEventListener("click", function() {
-        clear_video();
-    });
+    document.querySelector("#shuffle").addEventListener("click", () => { refreshVideoList(data, true); });
     
-    window.addEventListener("resize", function() {
+    document.querySelector("#backtotop").addEventListener("click", () => { window.scrollTo(0, 0); });
+    
+    
+    window.addEventListener("resize", () => {
         if (playingVideoData !== undefined)
             window.scrollTo(0, 0);
     });
-
-    document.querySelector("#yt").addEventListener("click", function() {
-        refreshVideoList(data, false);
-    });
     
-    document.querySelector("#shuffle").addEventListener("click", function() {
-        refreshVideoList(data, true);
-    });
 }
