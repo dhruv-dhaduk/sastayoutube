@@ -5,6 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sasta YouTube</title>
 
+        <script type="module">
+            const details = navigator.userAgent;
+            const regexp = /android|iphone|kindle|ipad/i;
+            if (regexp.test(details))
+                window.location.href = "youtubeM.html";
+            else
+                window.location.href = "youtube.html";
+        </script>
+        
         <style>
             body {
                 background-color: black;
@@ -23,14 +32,6 @@
             }
         </style>
 
-        <script type="module">
-            import { isMobileDevice } from "./scripts/device.js";
-
-            if(isMobileDevice())
-                window.location.href = "youtubeM.html";
-            else
-                window.location.href = "youtube.html";
-        </script>
     </head>
     <body">
         <img src="https://dhruv-dhaduk.github.io/assets/logos/colored/sasta_yt.png">
