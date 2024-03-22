@@ -1,8 +1,19 @@
 import { get_videoID_from_link, get_thumbnail_url, convertDurationToHMS, shuffle } from "./lib.js";
 
 addEventListener("message", function(msg) {
-    if (msg.data.command === "fetchAll") {
-        fetchAll()
+    // if (msg.data.command === "fetchAll") {
+    //     fetchAll()
+    //     .then((videos) => {
+    //         postMessage({videos});
+    //     })
+    //     .catch((error) => {
+    //         postMessage({error});
+    //     });
+    // }
+    // else 
+    if (msg.data.command === "fetchStatic") {
+        fetch("/data.json")
+        .then(res => res.json())
         .then((videos) => {
             postMessage({videos});
         })

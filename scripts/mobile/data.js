@@ -18,5 +18,5 @@ export function start_fetching()
         }
         fetchWorker.terminate();
     });
-    fetchWorker.postMessage({command: "fetchAll"});
+    fetchWorker.postMessage({command: "fetchStatic"});
 }
