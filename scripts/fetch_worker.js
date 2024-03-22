@@ -12,7 +12,7 @@ addEventListener("message", function(msg) {
     // }
     // else 
     if (msg.data.command === "fetchStatic") {
-        fetch("../../data.json")
+        fetch("https://dhruv-dhaduk.github.io/assets/data/sastayoutube.json")
         .then(res => res.json())
         .then((videos) => {
             postMessage({videos});
